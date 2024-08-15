@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
-int solve (double coefficient[3], double discriminant);
+int solve (double coefficient[3]);
 int formula (double * x_1, double * x_2, double coefficient[3], double discriminant);
 int formula_complex (double * x_real, double * x_imaginary, double coefficient[3], double discriminant);
 int formula_small (double * x, double coefficient[3]);
@@ -13,21 +13,22 @@ double const epsilon = 0.00000000001;
 
 int main(void)
 {   
-    double coefficient [3], discriminant = 0;
+    double coefficient [3];
     
     printf("Enter the coefficients of the quadratic equation (or 'q' to completion):\n");
     while ((scanf("%lg %lg %lg", &coefficient[0], &coefficient[1], &coefficient[2])) == 3)
     {
-        printf(" %lg * x^2 + %lg * x + %lg = 0 \n", coefficient[0] ,coefficient[1] ,coefficient[2]);
-        solve(coefficient, discriminant);
+        printf("%lg * x^2 + %lg * x + %lg = 0 \n", coefficient[0] ,coefficient[1] ,coefficient[2]);
+        solve(coefficient);
         printf("\nEnter the coefficients of the quadratic equation (or 'q' to completion):\n");
     }
     printf("\nHave a good day!");
  return 0;
 }
 
-    int solve(double coefficient[3], double discriminant)
+    int solve(double coefficient[3])
     {
+        double discriminant = 0;
         discriminant = coefficient[1] * coefficient[1] - 4 * coefficient[0] * coefficient[2];
 
         if (coefficient[0] != 0 && discriminant_epsilon_plus (discriminant, epsilon))
