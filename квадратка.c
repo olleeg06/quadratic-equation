@@ -14,8 +14,10 @@ int main(void)
 {   
     double coefficient [3], discriminant = 0;
     
-    printf("Enter the coefficients of the quadratic equation:\n");
-    scanf("%lg %lg %lg", &coefficient[0], &coefficient[1], &coefficient[2]);
+    printf("Enter the coefficients of the quadratic equation (or 'q' to completion):\n");
+    while ((scanf("%lg %lg %lg", &coefficient[0], &coefficient[1], &coefficient[2])) == 3){
+
+    
     printf(" %lg * x^2 + %lg * x + %lg = 0 \n", coefficient[0] ,coefficient[1] ,coefficient[2]);
 
     discriminant = coefficient[1] * coefficient[1] - 4 * coefficient[0] * coefficient[2];
@@ -45,8 +47,11 @@ int main(void)
         double solution;
         formula_linear (&solution, coefficient);
         printf ("solution to the equation: solution = %lg", solution);
-        
+
     }
+    printf("\nEnter the coefficients of the quadratic equation (or 'q' to completion):\n");
+    }
+    printf("\nHave a good day!");
  return 0;
 }
 
