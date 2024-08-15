@@ -26,22 +26,26 @@ int main(void)
         double solution_1, solution_2;
         formula (&solution_1, &solution_2, coefficient, discriminant);
         printf ("solutions to the equation: solution_1 = %lg, solution_2 = %lg", solution_1, solution_2);
+
     } else if (coefficient[0] != 0 && discriminant_epsilon_minus (discriminant, epsilon))
     {
         double solution_real, solution_imaginary;
         formula_complex (&solution_real, &solution_imaginary, coefficient, discriminant);
         printf ("solutions to the equation: solution_1 = %lg + %lg * i, solution_2 = %lg - %lg * i",
         solution_real, solution_imaginary,solution_real, solution_imaginary);
+
     } else if (coefficient[0] != 0 && !(discriminant_epsilon_plus (discriminant, epsilon)) && !(discriminant_epsilon_minus (discriminant, epsilon))) 
     {
-        double solution_bad;
-        formula_small (&solution_bad, coefficient);
-        printf ("solutions to the equation: solution_1 = solution_2 = %lg", solution_bad);
+        double solution_small;
+        formula_small (&solution_small, coefficient);
+        printf ("solutions to the equation: solution_1 = solution_2 = %lg", solution_small);
+
     } else 
     {
         double solution;
         formula_linear (&solution, coefficient);
         printf ("solution to the equation: solution = %lg", solution);
+        
     }
  return 0;
 }
