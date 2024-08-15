@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
+int solve (double coefficient[3], double discriminant);
 int formula (double * x_1, double * x_2, double coefficient[3], double discriminant);
 int formula_complex (double * x_real, double * x_imaginary, double coefficient[3], double discriminant);
 int formula_small (double * x, double coefficient[3]);
@@ -15,15 +16,21 @@ int main(void)
     double coefficient [3], discriminant = 0;
     
     printf("Enter the coefficients of the quadratic equation (or 'q' to completion):\n");
-    while ((scanf("%lg %lg %lg", &coefficient[0], &coefficient[1], &coefficient[2])) == 3){
+    while ((scanf("%lg %lg %lg", &coefficient[0], &coefficient[1], &coefficient[2])) == 3)
+    {
+        printf(" %lg * x^2 + %lg * x + %lg = 0 \n", coefficient[0] ,coefficient[1] ,coefficient[2]);
+        solve(coefficient, discriminant);
+        printf("\nEnter the coefficients of the quadratic equation (or 'q' to completion):\n");
+    }
+    printf("\nHave a good day!");
+ return 0;
+}
 
-    
-    printf(" %lg * x^2 + %lg * x + %lg = 0 \n", coefficient[0] ,coefficient[1] ,coefficient[2]);
+    int solve(double coefficient[3], double discriminant)
+    {
+        discriminant = coefficient[1] * coefficient[1] - 4 * coefficient[0] * coefficient[2];
 
-    discriminant = coefficient[1] * coefficient[1] - 4 * coefficient[0] * coefficient[2];
-
-
-    if (coefficient[0] != 0 && discriminant_epsilon_plus (discriminant, epsilon))
+        if (coefficient[0] != 0 && discriminant_epsilon_plus (discriminant, epsilon))
     {
         double solution_1, solution_2;
         formula (&solution_1, &solution_2, coefficient, discriminant);
@@ -49,11 +56,8 @@ int main(void)
         printf ("solution to the equation: solution = %lg", solution);
 
     }
-    printf("\nEnter the coefficients of the quadratic equation (or 'q' to completion):\n");
     }
-    printf("\nHave a good day!");
- return 0;
-}
+
 
 int formula (double * x_1, double * x_2, double coefficient[3], double discriminant)
 {
