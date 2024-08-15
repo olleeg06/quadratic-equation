@@ -2,6 +2,7 @@
 #include <math.h>
 
 int solve (double coefficient[3]);
+int input (double coefficient [3]);
 int formula (double * x_1, double * x_2, double coefficient[3], double discriminant);
 int formula_complex (double * x_real, double * x_imaginary, double coefficient[3], double discriminant);
 int formula_small (double * x, double coefficient[3]);
@@ -9,16 +10,16 @@ int formula_linear (double *x, double coefficient[3]);
 int discriminant_epsilon_plus (double discriminant, double epsilon);
 int discriminant_epsilon_minus (double discriminant, double epsilon);
 
-double const epsilon = 0.00000000001;
+double const epsilon = 1e-11;
 
 int main(void)
 {   
-    double coefficient [3];
-    
     printf("Enter the coefficients of the quadratic equation (or 'q' to completion):\n");
-    while ((scanf("%lg %lg %lg", &coefficient[0], &coefficient[1], &coefficient[2])) == 3)
+    double coefficient [3];
+
+    while (input(coefficient) == 3)
     {
-        printf("%lg * x^2 + %lg * x + %lg = 0 \n", coefficient[0] ,coefficient[1] ,coefficient[2]);
+        printf("%lg * x^2 + %lg * x + %lg = 0 \n",  coefficient[0], coefficient[1] ,coefficient[2]);
         solve(coefficient);
         printf("\nEnter the coefficients of the quadratic equation (or 'q' to completion):\n");
     }
@@ -26,12 +27,12 @@ int main(void)
  return 0;
 }
 
-    int solve(double coefficient[3])
-    {
+int solve(double coefficient[3])
+{
         double discriminant = 0;
         discriminant = coefficient[1] * coefficient[1] - 4 * coefficient[0] * coefficient[2];
 
-        if (coefficient[0] != 0 && discriminant_epsilon_plus (discriminant, epsilon))
+      if (coefficient[0] != 0 && discriminant_epsilon_plus (discriminant, epsilon))
     {
         double solution_1, solution_2;
         formula (&solution_1, &solution_2, coefficient, discriminant);
@@ -59,6 +60,10 @@ int main(void)
     }
     }
 
+int input(double coefficient [3])
+{
+    return scanf("%lg %lg %lg", &coefficient[0], &coefficient[1], &coefficient[2]);
+}
 
 int formula (double * x_1, double * x_2, double coefficient[3], double discriminant)
 {
