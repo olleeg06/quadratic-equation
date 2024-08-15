@@ -46,7 +46,7 @@ int main(void)
  return 0;
 }
 
-int formula_good (double * x_1, double * x_2, double coefficient[3], double discriminant)
+int formula (double * x_1, double * x_2, double coefficient[3], double discriminant)
 {
     *x_1 = (double) ( -1 * coefficient[1] + sqrt(discriminant) ) / ( 2 * coefficient[0] );
     *x_2 = (double) ( -1 * coefficient[1] - sqrt(discriminant) ) / ( 2 * coefficient[0] );
