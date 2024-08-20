@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <ctype.h>
+#include <string.h>
 #include <math.h>
 
 int check_program(double coefficient[3], double answer[2]);
@@ -15,6 +17,20 @@ double count_discriminant (double coefficient[3]);
 double const epsilon = 1e-11;
 
 
+struct equations{
+        double coefficients_a;
+        double coefficients_b;
+        double coefficients_c;
+        double answers_1;
+        double answers_2;
+    } equatoins_tab[] = {
+        1, 2, -8, 2, -4,
+        -5, 10, 40, -2, 4,
+        4, 7, -15, 1.25, -3
+    };
+
+
+
 int main(void) {
     double coefficient[3] = {0,0,0};
     double answer[2] = {0,0};
@@ -22,13 +38,13 @@ int main(void) {
     printf("Do you want to check the program before executing it? (if yes to '+', if no to '-')\n");
     char check;
     scanf("%c", &check);
-    
+
     switch (check)
     {
-        case '+' : check_program(coefficient, answer);
+        case '+' : check_program (coefficient, answer);
         break;
 
-        case '-':  execute_program(coefficient, answer);
+        case '-':  execute_program (coefficient, answer);
         break;
         default: printf("Error! Restart the program.");
     }
@@ -111,14 +127,19 @@ int show_answers (double coefficient[3], double answer[2], double discriminant)
 
 int check_program (double coefficient[3], double answer[2])
 {   
-    input_coefficient(coefficient);    
-    show_equation(coefficient);
-    double discriminant = count_discriminant (coefficient);   
-    solver_square (coefficient, discriminant, answer);
-    printf("If you program is true, you should get ");
-    show_answers(coefficient, answer, discriminant);
-    
-    return 0;
-  
-}
+    struct equations equations_tab[3];
+    for (int i=0; i<3;i++){
+        coefficient[0] = equatoins_tab[i].coefficients_a;
+        coefficient[1] = equatoins_tab[i].coefficients_b;
+        coefficient[2] = equatoins_tab[i].coefficients_c;
+
+        double discriminant = count_discriminant (coefficient);   
+        solver_square (coefficient, discriminant, answer);
+        show_answers(coefficient, answer, discriminant);
+
+        printf("The answers you should get are: solution_1 = %lg, solution_2 = %lg\n",
+         equatoins_tab[i].answers_1, equatoins_tab[i].answers_2);
+    }
+        return 0;
+    }
 
