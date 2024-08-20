@@ -3,6 +3,7 @@
 #include <string.h>
 #include <math.h>
 
+int input_selection(char *ch, char check);
 int check_program(double coefficient[3], double answer[2]);
 int execute_program(double coefficient[3], double answer[2]);
 int input_coefficient (double coefficient[3]);
@@ -34,10 +35,9 @@ struct equations{
 int main(void) {
     double coefficient[3] = {0,0,0};
     double answer[2] = {0,0};
-
-    printf("Do you want to check the program before executing it? (if yes to '+', if no to '-')\n");
     char check;
-    scanf("%c", &check);
+    
+    input_selection(&check, check);
 
     switch (check)
     {
@@ -48,6 +48,16 @@ int main(void) {
         break;
         default: printf("Error! Restart the program.");
     }
+}
+
+
+int input_selection(char *ch, char check)
+{
+    printf("Do you want to check the program before executing it? (if yes to '+', if no to '-')\n");
+    scanf("%c", &check);
+    *ch = check;
+    return 0;
+    
 }
 
 int execute_program (double coefficient[3], double answer[2])
@@ -76,7 +86,8 @@ int show_equation (double coefficient[3])
 {                              
     printf("%lg * x^2 + %lg * x + %lg = 0 \n",  coefficient[0], coefficient[1] ,coefficient[2]);
     return 0;
-}                                                       
+}      
+
 double count_discriminant (double coefficient[3]) 
 {
     return coefficient[1] * coefficient[1] - 4 * coefficient[0] * coefficient[2];
@@ -101,6 +112,7 @@ int formula_square (double * x_1, double * x_2, double coefficient[3], double di
     *x_2 = (double) (-coefficient[1] - sqrt(discriminant) ) / ( 2 * coefficient[0] );
     return 0;
 }
+
 int formula_linear (double *x, double coefficient[3])
 {
     *x = (double) -1 * coefficient[2] / coefficient[1];
