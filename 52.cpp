@@ -2,8 +2,10 @@
 #include <ctype.h>
 #include <string.h>
 #include <math.h>
+#include <windows.h>
 
-int compare_epsilon(double *argument);
+int compare_max(double a, double b, double *max, double *min);
+int compare_epsilon(double argument);
 int input_selection(char *ch, char check);
 int check_program(struct equations key[5]);
 int execute_program(double coefficient[3], double answer[2]);
@@ -25,12 +27,11 @@ struct equations{
     equations key[5]
     {
         {{      1,        2,     -8}, {       2,        -4}},
-        {{     -5,       10,     40}, {      -2,         4}},
+        {{     -5,       10,     40}, {       4,        -2}},
         {{      4,        7,    -15}, {    1.25,        -3}},
         {{ 48.755, -100.343,      5}, { 2.00701, 0.0510977}},
-        {{-0.1543,    5.134, -1.851}, {0.364531,  32.90831}}
+        {{-0.1543,    5.134, -1.851}, {32.90831,  0.364531}}
     };
-
 
 
 int main(void) {
@@ -50,7 +51,6 @@ int main(void) {
         default: printf("Error! Restart the program.");
     }
 }
-
 
 int input_selection(char *ch, char check)
 {
@@ -76,8 +76,6 @@ int execute_program (double coefficient[3], double answer[2])
 }
 
 int input_coefficient (double coefficient[3])
-
-
 {
     printf ("Enter the coefficients of the quadratic equation:\n");
     return scanf ("%lg %lg %lg", &coefficient[0], &coefficient[1], &coefficient[2]);
@@ -122,11 +120,11 @@ int formula_linear (double *x, double coefficient[3])
 
 int show_answers (double coefficient[3], double answer[2], double discriminant)
 {
-      if (coefficient[0] != 0 && compare_epsilon(&discriminant))
+      if (coefficient[0] != 0 && compare_epsilon(discriminant))
     {
         printf ("solutions to the equation: solution_1 = %lg, solution_2 = %lg\n", answer[0], answer[1]);
 
-    } else if (coefficient[0] != 0 && !(compare_epsilon(&discriminant)) && discriminant >= 0) 
+    } else if (coefficient[0] != 0 && !(compare_epsilon(discriminant)) && discriminant >= 0) 
     {
         printf ("solutions to the equation: solution = %lg\n", answer[0]);
 
@@ -140,23 +138,29 @@ int show_answers (double coefficient[3], double answer[2], double discriminant)
 
 int check_program (struct equations key[5])
 {   
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
     double answer[2] = {0,0};
     for (int i = 0; i < 5; i++){
 
         double discriminant = count_discriminant (key[i].coefficient);   
         solver_square (key[i].coefficient, discriminant, answer);
 
+        compare_max(answer[0], answer[1], &answer[0], &answer[1]);
         double option_1 = fabs(key[i].answer_supposed[0] - answer[0]);
         double option_2 = fabs(key[i].answer_supposed[1] - answer[1]);
-        double option_3 = fabs(key[i].answer_supposed[0] - answer[1]);
-        double option_4 = fabs(key[i].answer_supposed[1] - answer[0]);
+        
 
-        if (compare_epsilon (&option_1) && compare_epsilon (&option_1) ||
-            compare_epsilon (&option_3) && compare_epsilon (&option_4) )
+        if (compare_epsilon (option_1) && compare_epsilon (option_2) )
         {
+
+            SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
             printf("Test %d is OK\n", i+1);
         } else 
         {
+            
+
+            SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
             printf("Test %d is Error\n The answers you should get are: solution_1 = %lg, solution_2 = %lg\n"
             "The answers you got: solution_1 = %lg, solution_2 = %lg\n",
             i+1, key[i].answer_supposed[0], key[i].answer_supposed[1], answer[0], answer[1]);
@@ -166,12 +170,25 @@ int check_program (struct equations key[5])
         return 0;
     }
 
-
-int compare_epsilon(double *argument)
+int compare_epsilon(double argument)
 {
     double const epsilon = 1e-5;
-    if (*argument >= fabs(epsilon)) 
+    if (fabs(argument) <= epsilon)
         return 1;
     else 
         return 0;
+}
+
+int compare_max(double a, double b, double *max, double *min)
+{
+    if (a >= b)
+    { 
+        *max = a;
+        *min = b;
+    } else 
+    {
+        *max = b;
+        *min = a;
+    }
+    return 0;
 }
