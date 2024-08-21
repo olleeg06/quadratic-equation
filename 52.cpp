@@ -22,7 +22,8 @@ struct equations{
         double answer_supposed[2];
     };
 
-    equations key[5] {
+    equations key[5]
+    {
         {{      1,        2,     -8}, {       2,        -4}},
         {{     -5,       10,     40}, {      -2,         4}},
         {{      4,        7,    -15}, {    1.25,        -3}},
