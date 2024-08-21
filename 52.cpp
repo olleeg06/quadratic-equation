@@ -2,9 +2,8 @@
 #include <ctype.h>
 #include <string.h>
 #include <math.h>
-#include <windows.h>
 
-int compare_max(double a, double b, double *max, double *min);
+
 int compare_epsilon(double argument);
 int input_selection(char *ch, char check);
 int check_program(struct equations key[5]);
@@ -17,6 +16,9 @@ int formula_linear (double *x, double coefficient[3]);
 int show_answers (double coefficient[3], double answer[2], double discriminant); 
 double count_discriminant (double coefficient[3]); 
 
+#define COLOR_GREEN        "\x1b[32m"
+#define RESET_ALL          "\x1b[0m"
+#define COLOR_RED          "\x1b[31m"
 
 
 struct equations{
@@ -107,8 +109,18 @@ int solver_square (double coefficient[3], double discriminant, double answer[2])
 
 int formula_square (double * x_1, double * x_2, double coefficient[3], double discriminant)
 {
-    *x_1 = (double) (-coefficient[1] + sqrt(discriminant) ) / ( 2 * coefficient[0] );
-    *x_2 = (double) (-coefficient[1] - sqrt(discriminant) ) / ( 2 * coefficient[0] );
+    double x_11 = 0, x_22 = 0;
+    x_11 = (double) (-coefficient[1] + sqrt(discriminant) ) / ( 2 * coefficient[0] );
+    x_22 = (double) (-coefficient[1] - sqrt(discriminant) ) / ( 2 * coefficient[0] );
+    if (x_11 > x_22)
+    {
+        *x_1 = x_11;
+        *x_2 = x_22;
+    } else 
+    {
+        *x_1 = x_22;
+        *x_2 = x_11;
+    }
     return 0;
 }
 
@@ -138,35 +150,31 @@ int show_answers (double coefficient[3], double answer[2], double discriminant)
 
 int check_program (struct equations key[5])
 {   
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
     double answer[2] = {0,0};
+    int correct = 0;
+
     for (int i = 0; i < 5; i++){
 
         double discriminant = count_discriminant (key[i].coefficient);   
         solver_square (key[i].coefficient, discriminant, answer);
 
-        compare_max(answer[0], answer[1], &answer[0], &answer[1]);
         double option_1 = fabs(key[i].answer_supposed[0] - answer[0]);
         double option_2 = fabs(key[i].answer_supposed[1] - answer[1]);
-        
 
         if (compare_epsilon (option_1) && compare_epsilon (option_2) )
         {
-
-            SetConsoleTextAttribute(hConsole, FOREGROUND_GREEN);
-            printf("Test %d is OK\n", i+1);
+            printf(COLOR_GREEN "Test %d is OK\n" RESET_ALL, i+1);
+            correct++;
         } else 
         {
-            
-
-            SetConsoleTextAttribute(hConsole, FOREGROUND_RED);
-            printf("Test %d is Error\n The answers you should get are: solution_1 = %lg, solution_2 = %lg\n"
-            "The answers you got: solution_1 = %lg, solution_2 = %lg\n",
+            printf(COLOR_RED "Test %d is Error\n The answers you should get are: solution_1 = %lg, solution_2 = %lg\n"
+            "The answers you got: solution_1 = %lg, solution_2 = %lg\n" RESET_ALL,
             i+1, key[i].answer_supposed[0], key[i].answer_supposed[1], answer[0], answer[1]);
         }
         
     }
+    printf("Test passed %d equations out of 5", correct);
         return 0;
     }
 
@@ -179,16 +187,3 @@ int compare_epsilon(double argument)
         return 0;
 }
 
-int compare_max(double a, double b, double *max, double *min)
-{
-    if (a >= b)
-    { 
-        *max = a;
-        *min = b;
-    } else 
-    {
-        *max = b;
-        *min = a;
-    }
-    return 0;
-}
