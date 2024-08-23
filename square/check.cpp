@@ -33,6 +33,6 @@ int check_program (struct equations *key, double *answer)
         }
         
     }
-    printf("Test passed %d equations out of %d", correct, total_tests);
+    printf("Test passed %d equations out of %d\n", correct, total_tests);
         return 0;
     }

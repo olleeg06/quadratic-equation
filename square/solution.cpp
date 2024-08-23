@@ -3,10 +3,35 @@
 #include <math.h>
 #include "solution.hpp"
 #include <cstdio>
+#include "check.hpp"
 
 
 int formula_square (double *answer, double *coefficient, double discriminant); 
 int formula_linear (double *x, double *coefficient); 
+
+
+
+
+int execute_program (double *coefficient, double *answer) 
+    {
+    if (input_coefficient(coefficient) == number_coefficient)
+    {
+    show_equation(coefficient);
+    double discriminant = count_discriminant (coefficient);   
+    solver_square (coefficient, discriminant, answer);
+    show_answers(coefficient, answer, discriminant);
+    } else {
+        printf("Error! You did not enter numbers. Restart the program.");
+    }
+    return 0;
+}
+
+int input_coefficient (double *coefficient)
+{
+    printf ("Enter the coefficients of the quadratic equation:\n");
+    return scanf ("%lg %lg %lg", &coefficient[0], &coefficient[1], &coefficient[2]);
+}
+
 
 
 
@@ -80,8 +105,9 @@ int show_answers (double *coefficient, double *answer, double discriminant)
     {
         printf ("solutions to the equation: solution = %lg\n", answer[0]);
 
-    } else 
-    {
+    } else if (coefficient[0] == 0 && coefficient[1] == 0 && coefficient[2] == 0){
+        printf ("solutions to the equation: infinite number of roots\n");
+    } else {
         printf ("Error! No valid values\n");
 
     }
