@@ -101,7 +101,7 @@ int show_answers (double *coefficient, double *answer, double discriminant)
     {
         printf ("solutions to the equation: solution_1 = %lg, solution_2 = %lg\n", answer[0], answer[1]);
 
-    } else if (coefficient[0] != 0 && compare_epsilon(discriminant) && (discriminant >= 0)) 
+    } else if (coefficient[0] != 0 && compare_epsilon(discriminant) && (discriminant >= 0) || coefficient[0] == 0 && coefficient[1] != 0) 
     {
         printf ("solutions to the equation: solution = %lg\n", answer[0]);
 
