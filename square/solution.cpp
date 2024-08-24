@@ -4,7 +4,7 @@
 #include "solution.hpp"
 #include <cstdio>
 #include "check.hpp"
-
+#include "Command_line.hpp"
 
 int formula_square (double *answer, double *coefficient, double discriminant); 
 int formula_linear (double *x, double *coefficient); 
