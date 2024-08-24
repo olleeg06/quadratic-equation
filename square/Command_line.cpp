@@ -19,27 +19,23 @@ equations key[total_tests] =
     };
 
 
-    const int functions = 4;
+    const int number_functions = 4;
 
 
-int reading_functions(int argc, char *argv[], const char function_1[], const char function_2[], const char function_3[],
-                      const char function_4[], int count[functions]);
+int reading_functions(int argc, char *argv[], const char *function[], int count[number_functions]);
 
 int reading_file(double *coefficient, double *answer);
 
 
-int Command_line(int argc, char *argv[])
+int read_command_line(int argc, char *argv[])
 {
     double coefficient[number_coefficient] = {};
     double answer[number_answer] = {};
-    const char function_1[] = "help";
-    const char function_2[] = "test";
-    const char function_3[] = "solution";
-    const char function_4[] = "file";
+    const char *function[] = {"help", "test", "solution", "file"};
 
-    int count[functions] = {};
+    int count[number_functions] = {};
 
-    reading_functions(argc, argv, function_1, function_2, function_3, function_4, count);
+    reading_functions(argc, argv, function, count);
     
     
     if (count[0] > 0){
@@ -66,22 +62,22 @@ int Command_line(int argc, char *argv[])
 }
 
 
-int reading_functions(int argc, char *argv[], const char function_1[], const char function_2[], const char function_3[],
-                      const char function_4[], int count[functions])
+
+int reading_functions(int argc, char *argv[], const char *function[], int count[number_functions])
     {
 
     for(int j = 1; j < argc; j++){
 
-     if (strcmp(argv[j], function_1 ) == 0){
+     if (strcmp(argv[j], function[0] ) == 0){
         count[0]++;
 
-    } else if (strcmp(argv[j], function_2 ) == 0){
+    } else if (strcmp(argv[j], function[1] ) == 0){
         count[1]++;
 
-    } else if (strcmp(argv[j], function_3 ) == 0){
+    } else if (strcmp(argv[j], function[2] ) == 0){
         count[2]++;
 
-    } else if (strcmp(argv[j], function_4) == 0){
+    } else if (strcmp(argv[j], function[3]) == 0){
         count[3]++;
     }
     }
@@ -98,15 +94,16 @@ int reading_file(double *coefficient, double *answer) {
     };
 
     file = fopen("coefficients_square.txt", "r");
-    int i = 1;
-    while (fscanf(file, "%lf%lf%lf", 
-           &coefficient[0], &coefficient[1], &coefficient[2]) != EOF) {
+    if (file == NULL) {
+        printf("Error opening file");
+    } else {
+    for (int i = 1;fscanf(file, "%lf%lf%lf", 
+           &coefficient[0], &coefficient[1], &coefficient[2]) != EOF; i++) {
  
         double discriminant = count_discriminant (coefficient);   
         solver_square (coefficient, discriminant, answer);
         printf("Equation number %d:\n", i);
-        show_answers(coefficient, answer, discriminant);
-        i++;
+        show_answers(coefficient, answer, discriminant);}
 }
 return 0;
 }
