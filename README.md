@@ -32,30 +32,31 @@ make all
 ## Тестирование
 Какие инструменты тестирования использованы в проекте и как их запускать. Например:
 
-|Команды|
-|-------|
-|```sh
-./result help
-```|
+|         Команды         |
+|-------------------------|
+|      ./result help      |
+|      ./result test      |
+|    ./result solution    |
+|./result file "name_file"|
 |![image](https://github.com/user-attachments/assets/55247440-a29d-4df4-9332-acc32de8fc99)
 |
 |
 |Наш проект покрыт юнит-тестами. Для их запуска выполните команду:
-```sh
-./result test
-```
+
+
+
 ![image](https://github.com/user-attachments/assets/28d19e39-d861-415a-be75-b8202ace610f)
 
 Также для ввода коэффициентов вручную вводите команду:
 ```sh
-./result solution
+
 ```
 ![image](https://github.com/user-attachments/assets/a6aac7d4-ecb5-45f0-9953-88b12bc03dd5)
 
 
 И для чтения коэффициентов из файла:
 ```sh
-./result file "name_file"
+
 ```
 ![image](https://github.com/user-attachments/assets/231d8996-68f0-4267-a611-9de59a11cd15)
 
