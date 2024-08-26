@@ -37,7 +37,7 @@ make all
 ```sh
 ./result test
 ```
-![image](https://github.com/user-attachments/assets/28d19e39-d861-415a-be75-b8202ace610f)
+
 
 
 ## FAQ 
