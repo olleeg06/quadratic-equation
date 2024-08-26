@@ -7,4 +7,8 @@ To start working with the project, you must download all the files from the "squ
 The first command is "help". It displays all possible commands.
 The second command is "test". At this point, the code is checked and the output shows how many tests were successful.
 Using the third command "solution" we can manually enter the equation coefficients and we will get the answer.
-The fourth command "file <name>" reads commands from a file. In <name> you must enter the name of the file from which you are going to get the coefficients. The command will process and output the answers to all equations.
+The fourth command "file <name>" reads commands from a file. In <name> you must enter the name of the file from which you are going to receive the coefficients. The command will process and output the answers to all equations.
+
+When entering a non-existent command, you will be prompted with all existing commands.
+
+To contact me, you can write to the mail dontsov12345678908@mail.ru
