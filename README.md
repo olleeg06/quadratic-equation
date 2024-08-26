@@ -37,15 +37,12 @@ make all
 ```sh
 ./result test
 ```
-![alt text](image.png)
+![image](https://github.com/user-attachments/assets/28d19e39-d861-415a-be75-b8202ace610f)
 
 
 ## FAQ 
 Скоро здесь будут ваши вопросы и ответы на них.
 
-
-### Зачем вы разработали этот проект?
-Чтобы был.
 
 
 ## Команда проекта
@@ -56,8 +53,8 @@ make all
 - [Олег Донцов](https://t.me/olleeg06) — подчинённый 
 
 ## Источники
-http://storage.ded32.net.ru/Lib/TX/CPrimerPlus.pdf
+- С. Прата "Язык Си, лекции и упражнения", 6-е изд. - https://vk.com/doc44301783_593010761
 
-file:///D:/%D0%97%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8/Telegram%20Desktop/%D0%9F%D1%80%D0%B0%D1%82%D0%B0%20-%20%D0%AF%D0%B7%D1%8B%D0%BA%20C%20(6%20%D0%B8%D0%B7%D0%B4).pdf
+- Б. Керниган, Д. Ритчи "Язык Программирования Си", 3-е изд. - https://www.r-5.org/files/books/computers/languages/c/kr/Brian_Kernighan_Dennis_Ritchie-The_C_Programming_Language-RU.pdf
 
-file:///D:/%D0%97%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8/Telegram%20Desktop/%D0%9A%D0%B5%D1%80%D0%BD%D0%B8%D0%B3%D0%B0%D0%BD_%D0%91_,_%D0%A0%D0%B8%D1%82%D1%87%D0%B8_%D0%94_%D0%AF%D0%B7%D1%8B%D0%BA_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F_2.pdf
+- М. Уэйт, С. Прата, Д. Мартин, "Язык Си для начинающих" - http://storage.ded32.net.ru/Lib/TX/CPrimerPlus.pdf
