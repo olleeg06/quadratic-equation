@@ -34,10 +34,10 @@ make all
 
 |         Команды         |                     Выполнение                     |                                           Фото                                          |
 |-------------------------|----------------------------------------------------|-----------------------------------------------------------------------------------------|
-|      ./result help      |          Показывает все возможные команды          |![image](https://github.com/user-attachments/assets/164c919e-9bb3-487c-9b65-639531ec9bf6)|
-|      ./result test      |          Показывает результат юник-теста           |![image](https://github.com/user-attachments/assets/28d19e39-d861-415a-be75-b8202ace610f)|
-|    ./result solution    |            Решает квадратное уравнение             |![image](https://github.com/user-attachments/assets/a6aac7d4-ecb5-45f0-9953-88b12bc03dd5)|
-|./result file "name_file"|Считывает коэффициенты и решает квадратные уравнения|![image](https://github.com/user-attachments/assets/231d8996-68f0-4267-a611-9de59a11cd15)|
+|          -help          |          Показывает все возможные команды          |![image](https://github.com/user-attachments/assets/164c919e-9bb3-487c-9b65-639531ec9bf6)|
+|          -test          |          Показывает результат юник-теста           |![image](https://github.com/user-attachments/assets/28d19e39-d861-415a-be75-b8202ace610f)|
+|        -solution        |            Решает квадратное уравнение             |![image](https://github.com/user-attachments/assets/a6aac7d4-ecb5-45f0-9953-88b12bc03dd5)|
+|    -file "name_file"    |Считывает коэффициенты и решает квадратные уравнения|![image](https://github.com/user-attachments/assets/231d8996-68f0-4267-a611-9de59a11cd15)|
 
 
 ## FAQ 
