@@ -1,17 +1,87 @@
-My project can solve quadratic equations. You can enter the coefficients of an equation like a * x^2 + b * x + c = 0 and the program will give you the answer.
+# Название проекта
+Добавьте краткое описание проекта, опишите какую задачу он решает. 1-3 предложения будет достаточно. Добавьте бейджи для важных статусов проекта: статус разработки (в разработке, на поддержке и т.д.), статус билда, процент покрытия тестами и тд.
 
-The program is useful because you don't have to enter the coefficients manually. You can have a file with the coefficients and the program will be able to read them all and give you the answers.
+## Содержание
+- [Технологии](#технологии)
+- [Начало работы](#начало-работы)
+- [Тестирование](#тестирование)
+- [Deploy и CI/CD](#deploy-и-ci/cd)
+- [Contributing](#contributing)
+- [To do](#to-do)
+- [Команда проекта](#команда-проекта)
 
-To start working with the project, you must download all the files from the "square" folder (5 cpp files, 5 hpp files and 1 Makefile). To work with the files, you must either download my file, change the coefficients in it to your own or have your own ready-made file. First, you need to compile the files via Makefile with the "make all" command in the terminal. Then you get a file (in my case, "result)". After that, in the same terminal, enter "./result" and the commands. There are 4 of them: help, test, solution and file < name >.
+## Технологии
+- [GatsbyJS](https://www.gatsbyjs.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- ...
 
-The first command is "help". It displays all possible commands.
+## Использование
+Расскажите как установить и использовать ваш проект, покажите пример кода:
 
-The second command is "test". At this point, the code is checked and the output shows how many tests were successful.
+Установите npm-пакет с помощью команды:
+```sh
+$ npm i your-awesome-plugin-name
+```
 
-Using the third command "solution" we can manually enter the equation coefficients and we will get the answer.
+И добавьте в свой проект:
+```typescript
+import { hi } from "your-awesome-plugin-name";
 
-The fourth command "file < name >" reads commands from a file. In <name> you must enter the name of the file from which you are going to receive the coefficients. The command will process and output the answers to all equations.
+hi(); // Выведет в консоль "Привет!"
+```
 
-When entering a non-existent command, you will be prompted with all existing commands.
+## Разработка
 
-To contact me, you can write to the mail dontsov12345678908@mail.ru
+### Требования
+Для установки и запуска проекта, необходим [NodeJS](https://nodejs.org/) v8+.
+
+### Установка зависимостей
+Для установки зависимостей, выполните команду:
+```sh
+$ npm i
+```
+
+### Запуск Development сервера
+Чтобы запустить сервер для разработки, выполните команду:
+```sh
+npm start
+```
+
+### Создание билда
+Чтобы выполнить production сборку, выполните команду: 
+```sh
+npm run build
+```
+
+## Тестирование
+Какие инструменты тестирования использованы в проекте и как их запускать. Например:
+
+Наш проект покрыт юнит-тестами Jest. Для их запуска выполните команду:
+```sh
+npm run test
+```
+
+## Deploy и CI/CD
+Расскажите, как развернуть приложение. Как запустить пайплайны и т.д.
+
+## Contributing
+Как помочь в разработке проекта? Как отправить предложение или баг-репорт. Как отправить доработку (оформить pull request, какие стайлгайды используются). Можно вынести в отдельный файл — [Contributing.md](./CONTRIBUTING.md).
+
+## FAQ 
+Если потребители вашего кода часто задают одни и те же вопросы, добавьте ответы на них в этом разделе.
+
+### Зачем вы разработали этот проект?
+Чтобы был.
+
+## To do
+- [x] Добавить крутое README
+- [ ] Всё переписать
+- [ ] ...
+
+## Команда проекта
+Оставьте пользователям контакты и инструкции, как связаться с командой разработки.
+
+- [Богдан Звягинцев](tg://resolve?domain=bzvyagintsev) — Front-End Engineer
+
+## Источники
+Если вы чем-то вдохновлялись, расскажите об этом: где брали идеи, какие туториалы смотрели, ссылки на исходники кода. 
