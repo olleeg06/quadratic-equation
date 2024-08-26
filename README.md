@@ -32,33 +32,28 @@ make all
 ## Тестирование
 Какие инструменты тестирования использованы в проекте и как их запускать. Например:
 
-|         Команды         |
-|-------------------------|
-|      ./result help      |
-|      ./result test      |
-|    ./result solution    |
-|./result file "name_file"|
-|![image](https://github.com/user-attachments/assets/55247440-a29d-4df4-9332-acc32de8fc99)
-|
-|
-|Наш проект покрыт юнит-тестами. Для их запуска выполните команду:
+|         Команды         |                     Выполнение                     |photos|
+|-------------------------|----------------------------------------------------|------|
+|      ./result help      |          Показывает все возможные команды          ||![image](https://github.com/user-attachments/assets/55247440-a29d-4df4-9332-acc32de8fc99)|
+|      ./result test      |          Показывает результат юник-теста           |![image](https://github.com/user-attachments/assets/28d19e39-d861-415a-be75-b8202ace610f)|
+|    ./result solution    |            Решает квадратное уравнение             |![image](https://github.com/user-attachments/assets/a6aac7d4-ecb5-45f0-9953-88b12bc03dd5)|
+|./result file "name_file"|Считывает коэффициенты и решает квадратные уравнения|![image](https://github.com/user-attachments/assets/231d8996-68f0-4267-a611-9de59a11cd15)|
 
 
 
-![image](https://github.com/user-attachments/assets/28d19e39-d861-415a-be75-b8202ace610f)
 
 Также для ввода коэффициентов вручную вводите команду:
 ```sh
 
 ```
-![image](https://github.com/user-attachments/assets/a6aac7d4-ecb5-45f0-9953-88b12bc03dd5)
+
 
 
 И для чтения коэффициентов из файла:
 ```sh
 
 ```
-![image](https://github.com/user-attachments/assets/231d8996-68f0-4267-a611-9de59a11cd15)
+
 
 
 ## FAQ 
