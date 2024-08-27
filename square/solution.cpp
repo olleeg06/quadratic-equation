@@ -19,6 +19,7 @@ int execute_program (double *coefficient, double *answer)
     show_equation(coefficient);
     double discriminant = count_discriminant (coefficient);   
     solver_square (coefficient, discriminant, answer);
+
     show_answers(coefficient, answer, discriminant);
     } else {
         printf("Error! You did not enter numbers. Restart the program.");
@@ -97,6 +98,7 @@ int formula_linear (double *x, double *coefficient)
 
 int show_answers (double *coefficient, double *answer, double discriminant)
 {
+
       if (coefficient[0] != 0 && !(compare_epsilon(discriminant)) && (discriminant >= 0))
     {
         printf ("solutions to the equation: solution_1 = %lg, solution_2 = %lg\n", answer[0], answer[1]);

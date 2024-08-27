@@ -10,29 +10,29 @@
  
 
 
-int reading_functions(int argc, char *argv[], const char *function[], int count[number_functions], char *file_name[]);
+int reading_functions(int argc, char *argv[], const char *function[], struct calculate *keys);
 
-int reading_file(double *coefficient, double *answer, char *file_name[]);
+int reading_file(double *coefficient, double *answer, calculate keys);
 
 
-int reading_functions(int argc, char *argv[], const char *function[], int count[number_functions], char *file_name[])
+int reading_functions(int argc, char *argv[], const char *function[], struct calculate *keys)
     {
 
     for(int i = 1; i < argc; i++){
 
      if (strcmp(argv[i], function[0]) == 0){
-        count[0]++;
+        keys->function_1++;
 
     } else if (strcmp(argv[i], function[1]) == 0){
-        count[1]++;
+        keys->function_2++;
 
     } else if (strcmp(argv[i], function[2]) == 0){
-        count[2]++;
+        keys->function_3++;
 
     } else if (strcmp(argv[i], function[3]) == 0){
-        *file_name = argv[i+1];
+        keys->file_name = argv[i+1];
         i++;
-        count[3]++;
+        keys->function_4++;
     }
     }
 
@@ -41,13 +41,13 @@ return 0;
 }
 
 
-int reading_file(double *coefficient, double *answer, char *file_name[]) {
+int reading_file(double *coefficient, double *answer, calculate keys) {
     
     struct coefficientss{
         double coefficient[number_coefficient];
     };
     
-    FILE *file = fopen(*file_name, "r");
+    FILE *file = fopen(keys.file_name, "r");
     if (file == NULL) {
         printf("Error opening file");
     } else {

@@ -14,30 +14,29 @@ int main(int argc, char *argv[]) {
 
     double coefficient[number_coefficient] = {};
     double answer[number_answer] = {};
-    const char *function[] = {"help", "test", "solution", "file"};
-    char *file_name[] = {};
+    const char *function[] = {"help", "test", "solution", "file"}; // чёто поменять 
+  
+  calculate keys = {0,0,0,0,0};
 
-    int calculate[number_functions] = {};
-
-    reading_functions(argc, argv, function, calculate, file_name);
+    reading_functions(argc, argv, function, &keys);
     
-     if (calculate[0] > 0){
+     if (keys.function_1 > 0){
         printf ("-help\n-test\n-solution\n-file @name\n");
     } 
 
-    if (calculate[1] > 0){
+    if (keys.function_2 > 0){
         check_program(answer);
     }
 
-    if (calculate[2] > 0){
+    if (keys.function_3 > 0){
         execute_program(coefficient, answer);
     }
 
-    if (calculate[3] > 0){
-        reading_file(coefficient, answer, file_name);
+    if (keys.function_4 > 0){
+        reading_file(coefficient, answer, keys);
     }
 
-    if (calculate[0] == 0 && calculate[1] == 0 && calculate[2] == 0 && calculate[3] == 0){
+    if (keys.function_1 == 0 && keys.function_2 == 0 && keys.function_3 == 0 && keys.function_4 == 0){
        printf ("Error!\n-help\n-test\n-solution\n-file @name\n"); 
     }
 
