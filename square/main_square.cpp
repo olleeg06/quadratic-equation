@@ -14,11 +14,11 @@ int main(int argc, char *argv[]) {
 
     double coefficient[number_coefficient] = {};
     double answer[number_answer] = {};
-    const char *function[] = {"help", "test", "solution", "file"}; // чёто поменять 
-  
-  calculate keys = {0,0,0,0,0};
 
-    reading_functions(argc, argv, function, &keys);
+    calculate keys = {0,0,0,0,0};
+
+    commands meow = {"help", "test", "solution", "file"};
+    reading_functions(argc, argv, meow, &keys);
     
      if (keys.function_1 > 0){
         printf ("-help\n-test\n-solution\n-file @name\n");

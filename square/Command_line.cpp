@@ -10,26 +10,26 @@
  
 
 
-int reading_functions(int argc, char *argv[], const char *function[], struct calculate *keys);
+int reading_functions(int argc, char *argv[], struct commands meow, struct calculate *keys);
 
 int reading_file(double *coefficient, double *answer, calculate keys);
 
 
-int reading_functions(int argc, char *argv[], const char *function[], struct calculate *keys)
+int reading_functions(int argc, char *argv[], struct commands meow, struct calculate *keys)
     {
 
     for(int i = 1; i < argc; i++){
 
-     if (strcmp(argv[i], function[0]) == 0){
+     if (strcmp(argv[i], meow.command_1) == 0){
         keys->function_1++;
 
-    } else if (strcmp(argv[i], function[1]) == 0){
+    } else if (strcmp(argv[i], meow.command_2) == 0){
         keys->function_2++;
 
-    } else if (strcmp(argv[i], function[2]) == 0){
+    } else if (strcmp(argv[i], meow.command_3) == 0){
         keys->function_3++;
 
-    } else if (strcmp(argv[i], function[3]) == 0){
+    } else if (strcmp(argv[i], meow.command_4) == 0){
         keys->file_name = argv[i+1];
         i++;
         keys->function_4++;
